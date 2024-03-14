@@ -1,0 +1,28 @@
+# Configuration for Cog ⚙️
+# Reference: https://github.com/replicate/cog/blob/main/docs/yaml.md
+
+build:
+  gpu: true
+  system_packages:
+    - "libgl1-mesa-glx"
+    - "libglib2.0-0"
+  python_version: "3.10"
+  python_packages:
+    - "torch==2.0.1"
+    - "torchvision"
+    - "numpy==1.26.4"
+    - "soundfile==0.12.1"
+    - "scipy==1.12.0"
+    - "tqdm==4.66.2"
+    - "librosa==0.10.1"
+    - "demucs==4.0.1"
+    - "onnxruntime-gpu==1.17.1"
+    - "PyQt5==5.15.10"
+    - "gradio==3.27.0"
+    - "matplotlib==3.8.3"
+
+  run:
+    - curl -o /usr/local/bin/pget -L "https://github.com/replicate/pget/releases/download/v0.5.6/pget_linux_x86_64" && chmod +x /usr/local/bin/pget
+
+# predict.py defines how predictions are run on your model
+predict: "predict.py:Predictor"
